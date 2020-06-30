@@ -1,12 +1,11 @@
-import express from "express";
-import mongoose from "mongoose";
-import path from "path";
-import cors from "cors";
-import morgan from "morgan";
-import config from "./config";
+const express = require("express");
+const mongoose = require("mongoose");
+const path = require("path");
+const cors = require("cors");
+const config = require("./config");
 
 // routes
-import routes from "./routes";
+const routes = require("./routes");
 
 const { MONGO_URI, MONGO_DB_NAME } = config;
 
@@ -14,8 +13,6 @@ const app = express();
 
 // CORS Middleware
 app.use(cors());
-// Logger Middleware
-app.use(morgan("dev"));
 // Bodyparser Middleware
 app.use(express.json());
 
@@ -45,4 +42,4 @@ app.use(routes);
 // 	});
 // }
 
-export default app;
+module.exports = app;
